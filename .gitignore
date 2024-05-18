@@ -52,3 +52,11 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+# Idea
+.idea/
+cmake-build-*/
+
+# Project
+3rd/*
+!3rd/CMakeLists.txt
