@@ -23,9 +23,11 @@
 
 namespace Utils::File {
 
-    DirEntry listDir(const QDir &dir, const QDir::Filter &filter) {
+    DirEntry listDir(QDir &&dir, QDir::Filter &&filter) {
         DirEntry dirEntry;
-        auto items = dir.entryInfoList(filter);
+        auto items = dir.entryInfoList(
+                QDir::Filter::NoDotAndDotDot | QDir::Filter::Dirs | QDir::Filter::Files | QDir::Filter::NoSymLinks &
+                filter);
         for (const auto &item: items) {
             if (item.isFile()) {
                 dirEntry.fileList.push_back(item.fileName());

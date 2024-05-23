@@ -31,6 +31,6 @@ namespace Utils::File {
      * @param dir dirPath checked exist
      * @return
      */
-    DirEntry listDir(const QDir &dir, const QDir::Filter &filter = QDir::Filter::NoFilter);
+    DirEntry listDir(QDir &&dir, QDir::Filter &&filter = QDir::Filter::NoFilter);
 }
 #endif //LINKERFS_WARP_GEN_QT_FILE_HPP
