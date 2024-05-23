@@ -28,9 +28,9 @@
 class ListDirRespDto : public AbstractRespDataDto, public DirEntry {
 public:
     explicit ListDirRespDto(DirEntry &&dirEntry) noexcept {
-        dirPath = dirEntry.dirPath;
-        dirList = dirEntry.dirList;
-        fileList = dirEntry.fileList;
+        dirPath = std::move(dirEntry.dirPath);
+        dirList = std::move(dirEntry.dirList);
+        fileList = std::move(dirEntry.fileList);
     };
 
     QJsonValue toJsonValue() override {

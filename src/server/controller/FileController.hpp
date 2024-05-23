@@ -35,7 +35,7 @@ namespace Controller::File {
         if (dto->convertRequest(request.body(), errMsg)) {
             QDir dir(dto->getDirPath());
             if (dir.exists()) {
-                ListDirRespDto resp(Utils::File::listDir(dir));
+                ListDirRespDto resp(Utils::File::listDir(std::move(dir)));
                 return ResponseDto::success(resp.toJsonValue());
             } else {
                 return ResponseDto::fail(QString("Dir: %1 is not found!").arg(dto->getDirPath()));

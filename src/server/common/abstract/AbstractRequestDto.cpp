@@ -25,7 +25,7 @@
 QString AbstractRequestDto::errMsgInvalid = QObject::tr("is inValid!");
 QString AbstractRequestDto::errMsgEmpty = QObject::tr("is empty!");
 
-bool AbstractRequestDto::convertRequest(const QByteArray &&request, QString &errMsg) {
+bool AbstractRequestDto::convertRequest(QByteArray &&request, QString &errMsg) {
     QJsonDocument jsonDocument = QJsonDocument::fromJson(request);
     if (jsonDocument.isObject())
         return convertRequestPrivate(jsonDocument.object(), errMsg);

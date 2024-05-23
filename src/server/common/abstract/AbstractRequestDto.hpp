@@ -28,7 +28,7 @@
 
 class AbstractRequestDto {
 public:
-    bool convertRequest(const QByteArray &&request, QString &errMsg);
+    bool convertRequest(QByteArray &&request, QString &errMsg);
 
 protected:
     virtual bool convertRequestPrivate(const QJsonObject &&jsonObject, QString &errMsg) = 0;
