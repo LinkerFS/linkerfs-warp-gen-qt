@@ -35,14 +35,16 @@ class ResponseDto {
 public:
     static QHttpServerResponse success(QJsonValue &&jsonValue) {
         ResponseDto responseDto(ResponseStatus::ResponseStatus_OK, QObject::tr("Success"), std::move(jsonValue));
-        auto resp = QHttpServerResponse("application/json;charset=UTF-8",responseDto.toByteArray(), QHttpServerResponse::StatusCode::Ok);
+        auto resp = QHttpServerResponse("application/json;charset=UTF-8", responseDto.toByteArray(),
+                                        QHttpServerResponse::StatusCode::Ok);
         return std::move(resp);
     }
 
     static QHttpServerResponse fail(QString &&msg) {
         ResponseDto responseDto(ResponseStatus::ResponseStatus_Fail, std::move(msg),
                                 QJsonValue(QJsonValue::Type::Null));
-        auto resp = QHttpServerResponse("application/json;charset=UTF-8",responseDto.toByteArray(), QHttpServerResponse::StatusCode::Ok);
+        auto resp = QHttpServerResponse("application/json;charset=UTF-8", responseDto.toByteArray(),
+                                        QHttpServerResponse::StatusCode::Ok);
         return std::move(resp);
     }
 
