@@ -27,7 +27,10 @@
 class DirEntry {
 public:
     QString dirPath;
-    QStringList fileList;
+    /**
+     * (fileName,size) list
+     */
+    QList<QPair<QString,qint64>> fileList;
     /**
      * (dirName,isEmpty) list
      */

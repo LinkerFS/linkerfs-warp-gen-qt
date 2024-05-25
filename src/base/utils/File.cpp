@@ -27,10 +27,10 @@ namespace Utils::File {
         DirEntry dirEntry;
         auto items = dir.entryInfoList(
                 QDir::Filter::NoDotAndDotDot | QDir::Filter::Dirs | QDir::Filter::Files | QDir::Filter::NoSymLinks &
-                filter);
+                                                                                          filter);
         for (const auto &item: items) {
             if (item.isFile()) {
-                dirEntry.fileList.push_back(item.fileName());
+                dirEntry.fileList.push_back(QPair<QString, qint64>(item.fileName(), item.size()));
             } else if (item.isDir()) {
                 dirEntry.dirList.push_back(QPair<QString, bool>(item.fileName(), QDir(item.path()).isEmpty()));
             }

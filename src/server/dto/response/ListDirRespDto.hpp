@@ -36,14 +36,22 @@ public:
     QJsonValue toJsonValue() override {
         QJsonObject object;
         QJsonArray dirArray;
+        QJsonArray fileArray;
         for (const auto &dir: dirList) {
             QJsonObject dirObject;
             dirObject.insert("name", dir.first);
             dirObject.insert("isEmpty", dir.second);
             dirArray.push_back(dirObject);
         }
+        for (const auto &file: fileList) {
+
+            QJsonObject fileObject;
+            fileObject.insert("name", file.first);
+            fileObject.insert("size", file.second);
+            fileArray.push_back(fileObject);
+        }
         object.insert("dirPath", dirPath);
-        object.insert("fileList", QJsonArray::fromStringList(fileList));
+        object.insert("fileList", fileArray);
         object.insert("dirList", dirArray);
         return object;
     }
