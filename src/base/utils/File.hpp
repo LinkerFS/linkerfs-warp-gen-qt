@@ -32,5 +32,7 @@ namespace Utils::File {
      * @return
      */
     DirEntry listDir(QDir &&dir, QDir::Filter &&filter = QDir::Filter::NoFilter);
+
+    DirEntry listDrivers();
 }
 #endif //LINKERFS_WARP_GEN_QT_FILE_HPP

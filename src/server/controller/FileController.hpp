@@ -33,6 +33,10 @@ namespace Controller::File {
         auto dto = std::make_unique<ListDirReqDto>();
         QString errMsg;
         if (dto->convertRequest(request.body(), errMsg)) {
+            if (dto->getDirPath().isEmpty()) {
+                ListDirRespDto resp(Utils::File::listDrivers());
+                return ResponseDto::success(resp.toJsonValue());
+            }
             QDir dir(dto->getDirPath());
             if (dir.exists()) {
                 ListDirRespDto resp(Utils::File::listDir(std::move(dir)));

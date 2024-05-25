@@ -22,8 +22,9 @@
 #include "ListDirReqDto.hpp"
 
 bool ListDirReqDto::convertRequestPrivate(const QJsonObject &&jsonObject, QString &errMsg) {
-    dirPath = jsonObject.value("dirPath").toString("");
-    if (dirPath.isEmpty())
+    dirPath = jsonObject.value("dirPath").toString("#");
+    bool result = dirPath != "#";
+    if (!result)
         errMsg = QString("dirPath %1").arg(errMsgInvalid);
-    return !dirPath.isEmpty();
+    return result;
 }

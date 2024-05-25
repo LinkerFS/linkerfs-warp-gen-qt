@@ -38,4 +38,13 @@ namespace Utils::File {
         dirEntry.dirPath = dir.path();
         return dirEntry;
     }
+
+    DirEntry listDrivers() {
+        DirEntry dirEntry;
+        auto drivers = QDir::drives();
+        for (const auto &driver: drivers) {
+            dirEntry.dirList.push_back(QPair<QString, bool>(driver.path(), QDir(driver.path()).isEmpty()));
+        }
+        return dirEntry;
+    }
 }
