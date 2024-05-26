@@ -27,7 +27,7 @@ InstanceManager<WebApplication> WebApplication::instanceMgr;
 
 void WebApplication::run(const QHostAddress &&address, const quint16 &&port) {
 
-    httpServer.route("/api/file/listdir", QHttpServerRequest::Method::Post, Controller::File::listDir);
+    httpServer.route("/api/file/listDir", QHttpServerRequest::Method::Post, Controller::File::listDir);
     httpServer.route("/webui", QHttpServerRequest::Method::Get, Controller::Static::staticFile);
     httpServer.route("/", QHttpServerRequest::Method::Get, Controller::Static::redirectStatic);
     httpServer.listen(address, port);
