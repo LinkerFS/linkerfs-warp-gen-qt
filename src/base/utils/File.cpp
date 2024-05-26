@@ -25,14 +25,15 @@ namespace Utils::File {
 
     DirEntry listDir(QDir &&dir, QDir::Filter &&filter) {
         DirEntry dirEntry;
-        auto items = dir.entryInfoList(
-                QDir::Filter::NoDotAndDotDot | QDir::Filter::Dirs | QDir::Filter::Files | QDir::Filter::NoSymLinks &
-                                                                                          filter);
+        auto filterFlag =
+                QDir::Filter::NoDotAndDotDot | QDir::Filter::Dirs |
+                QDir::Filter::Files | QDir::Filter::NoSymLinks & filter;
+        auto items = dir.entryInfoList(filterFlag);
         for (const auto &item: items) {
             if (item.isFile()) {
                 dirEntry.fileList.push_back(QPair<QString, qint64>(item.fileName(), item.size()));
             } else if (item.isDir()) {
-                dirEntry.dirList.push_back(QPair<QString, bool>(item.fileName(), QDir(item.path()).isEmpty()));
+                dirEntry.dirList.push_back(QPair<QString, bool>(item.fileName(), QDir(item.filePath()).isEmpty(filterFlag)));
             }
         }
         dirEntry.dirPath = dir.path();
