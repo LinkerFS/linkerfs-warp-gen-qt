@@ -52,6 +52,6 @@ make
 
 ## Credits
 
-[Qt](https://www.qt.io/) License: [LGPLv3](https://www.gnu.org/licenses/)
+[Qt](https://www.qt.io/) License: [GPLv3](http://www.gnu.org/licenses/gpl-3.0.html)
 
 
